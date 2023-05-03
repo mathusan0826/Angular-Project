@@ -1,0 +1,66 @@
+<button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary" style="margin-top: 10px; margin-left: 700px;">Produt_Items</button>
+
+    <div class="container-fluid">  
+        <div class="table-responsive" style="margin-top: 10px;">
+        <table class="table table-hover table-bordered">
+            <thead class="bg-body-tertiary">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Categories</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of productItem">
+        
+        <td>{{list.Name}}</td>
+        <td>{{list.Description}}</td>
+        <td>{{list.Categories}}</td>
+        <td>
+
+              
+                <button class="btn btn-info"><i class="fa-sharp fa-wrench"></i></button>
+                <button class="btn btn-danger mx-3"><i class="fa fa-trash"></i></button>
+                <button class="btn btn-danger mx-3" (click)="delproductItem(list)"><i class="fa fa-trash"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Product_ItemDetails</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form name="orderForm" [formGroup]="productItem" action="" method="POST"> 
+                <div class="mb-3">
+                  <label for="Name" class="form-label">Name</label>
+                  <input type="text" formControlName="Name" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="discription" class="form-label">Discription</label>
+                    <input type="text" formControlName="discription" class="form-control">
+                  </div>
+                  <div class="mb-3">
+                    <label for="categories" class="form-label">Categories</label>
+                    <input type="categories" formControlName="categories" class="form-control">
+                </div>
+                  
+    
+                  
+              </form>
+         </div>
+            <div class="modal-footer">
+              <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" value="Submit" (click)="saveOrder()" class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
